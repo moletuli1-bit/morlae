@@ -1,10 +1,10 @@
-const floor = document.querySelector(".floor");
+const room = document.querySelector(".mini-room");
 let isDragging = false;
 let deltaX = 0, deltaY = 0;
 let rotateX = 0, rotateY = 0;
 
 //check dragging
-floor.addEventListener("mousedown", function(event) {
+room.addEventListener("mousedown", function(event) {
     isDragging = true;
 });
 //check dragging is done
@@ -20,6 +20,6 @@ document.addEventListener("mousemove", function(event) {
         rotateX += deltaY*0.2;
         rotateY += deltaX*0.2;
 
-        floor.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        room.style.transform = `translate(-50%, -50%) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     }
 });
