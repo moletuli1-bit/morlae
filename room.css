@@ -44,10 +44,10 @@ body {
 }
 
 /* wall rotations/placement */
-.front-wall {
+.back-wall {
     transform: translateZ(calc(-1*var(--half-room)));
 }
-.back-wall { 
+.front-wall { 
     transform: translateZ(var(--half-room));
 }
 .right-wall {
