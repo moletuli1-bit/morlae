@@ -1,8 +1,14 @@
 import * as THREE from 'three';
 import { scene, camera, renderer } from './scene.js';
+import { computer_state } from './objects.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import * as ANIMATIONS from './animations.js';
+
 //adding Orbit Controls
 const controls = new OrbitControls(camera, renderer.domElement);
+
+//variable for ensuring no items are visibly being examined right now
+let examining = false;
 
 const ray = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -17,10 +23,17 @@ window.addEventListener('click', (event)=> {
 
     if(intersects.length > 0){
         switch(intersects[0].object.name){
-            case 'computer':
-                AnimateComputer();
+            case 'SM_Monitor_M_Monitor_0':
+                //Use corresponding animation to which state we are in
+                if(examining){
+                    ANIMATIONS.ReturnObject(computer_state);
+                }else{
+                    ANIMATIONS.ExamineComputer();
+                }
+                examining = !examining;
                 break;
             default:
+                console.log('Item clicked:' + intersects[0].object.name);
                 break;
         }
     }

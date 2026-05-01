@@ -2,6 +2,22 @@ import * as THREE from 'three';
 import { scene } from './scene.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+//#region Object stats
+
+export const computer_state = {
+    mesh: null,
+    originalPosition: null,
+    originalRotation: null
+}
+
+export const punching_bag_state = {
+    mesh: null,
+    originalPosition: null,
+    originalRotation: null
+}
+
+//#endregion
+
 //#region House Object
 
 //plank texture
@@ -35,13 +51,16 @@ loader.load('/Room.glb', function(gltf) {
 //#endregion
 
 //#region About Me Items
-
 loader.load('/punching_bag.glb', function(gltf){
     console.log('punching bag loaded!')
 
     gltf.scene.position.set(3, 3.8, -3.8);
     gltf.scene.scale.set(3, 3, 3);
     gltf.scene.rotation.y = -Math.PI / 2;
+
+    punching_bag_state.mesh = gltf.scene;
+    punching_bag_state.originalPosition = gltf.scene.position.clone();
+    punching_bag_state.originalRotation = gltf.scene.rotation.y;
 
     scene.add(gltf.scene);
 });
@@ -52,6 +71,10 @@ loader.load('/computer.glb', function(gltf){
     gltf.scene.scale.set(0.1, 0.1, 0.1);
     gltf.scene.rotation.y = Math.PI / 2;
     gltf.scene.position.set(-3.6, 2.6, 0);
+
+    computer_state.mesh = gltf.scene;
+    computer_state.originalPosition = gltf.scene.position.clone();
+    computer_state.originalRotation = gltf.scene.rotation.clone();
 
     scene.add(gltf.scene);
 });
