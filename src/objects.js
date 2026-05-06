@@ -52,15 +52,15 @@ loader.load('/Room.glb', function(gltf) {
 
 //#region About Me Items
 loader.load('/punching_bag.glb', function(gltf){
-    console.log('punching bag loaded!')
+    console.log('punching bag loaded!');
 
-    gltf.scene.position.set(3, 3.8, -3.8);
+    gltf.scene.position.set(3, 7, -3.8);
     gltf.scene.scale.set(3, 3, 3);
     gltf.scene.rotation.y = -Math.PI / 2;
 
     punching_bag_state.mesh = gltf.scene;
     punching_bag_state.originalPosition = gltf.scene.position.clone();
-    punching_bag_state.originalRotation = gltf.scene.rotation.y;
+    punching_bag_state.originalRotation = gltf.scene.rotation.clone();
 
     scene.add(gltf.scene);
 });

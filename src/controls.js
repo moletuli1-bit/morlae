@@ -27,10 +27,15 @@ window.addEventListener('click', (event)=> {
                 //Use corresponding animation to which state we are in
                 if(examining){
                     ANIMATIONS.ReturnObject(computer_state);
+                    controls.enabled = true;
                 }else{
                     ANIMATIONS.ExamineComputer();
+                    controls.enabled = false;
                 }
                 examining = !examining;
+                break;
+            case 'defaultMaterial':
+                ANIMATIONS.PunchBag();
                 break;
             default:
                 console.log('Item clicked:' + intersects[0].object.name);

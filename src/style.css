@@ -8,3 +8,16 @@ body {
   background: #111;
   overflow: hidden;
 }
+
+#monitor-overlay {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  width: 40%;
+  height: 90%;
+  background-color: black;
+  z-index: 10;
+  display: none;
+  font-family: monospace;
+  color: #FFB000;
+}
